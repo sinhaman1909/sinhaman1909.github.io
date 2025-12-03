@@ -3,34 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Welcome</title>
+  <title>Welcome — Aman</title>
   <meta name="description" content="NFC landing — WiFi QR, contact & Instagram" />
+  <meta name="theme-color" content="#071029">
   <style>
     :root{
-      --bg1: #0f1724;
-      --bg2: #071029;
-      --card: rgba(255,255,255,0.04);
-      --accent: #4ba3ff;
-      --muted: rgba(255,255,255,0.7);
-      --glass: rgba(255,255,255,0.03);
-      --radius: 16px;
-      --maxw: 520px;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg1:#071029; --bg2:#081224; --accent:#4ba3ff; --muted:rgba(255,255,255,0.75);
+      --card: rgba(255,255,255,0.03); --radius:14px; --maxw:600px; --glass: rgba(255,255,255,0.03);
+      --glass-strong: rgba(255,255,255,0.06);
+      --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Helvetica Neue";
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       min-height:100%;
       font-family:var(--font-sans);
-      background: radial-gradient(1200px 600px at 10% 15%, rgba(75,163,255,0.06), transparent 8%),
-                  linear-gradient(120deg, rgba(8,10,20,1) 0%, rgba(6,12,25,1) 50%, rgba(2,6,15,1) 100%);
+      background: radial-gradient(1000px 420px at 10% 12%, rgba(75,163,255,0.06), transparent 7%),
+                  linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 50%, #02060b 100%);
       color:#fff;
       display:flex;
-      align-items:center;
+      align-items:flex-start; /* so header stays visible on small devices */
       justify-content:center;
-      padding:28px;
+      padding:28px 18px;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
@@ -39,230 +34,160 @@
       width:100%;
       max-width:var(--maxw);
       text-align:center;
-      transform:translateY(0);
-      animation: floatIn 420ms cubic-bezier(.2,.9,.3,1);
-    }
-    @keyframes floatIn {
-      from { opacity:0; transform:translateY(8px) scale(.995) }
-      to   { opacity:1; transform:translateY(0) scale(1) }
+      margin-top:12px;
     }
 
     header {
-      margin-bottom:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-    }
-    .brand {
       text-align:left;
+      margin-bottom:14px;
+      padding:18px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 10px 30px rgba(2,6,15,0.5);
     }
-    h1{
-      font-size:22px;
+
+    h1 {
       margin:0;
-      letter-spacing: -0.01em;
-      font-weight:700;
+      font-size:20px;
+      line-height:1.05;
+      font-weight:800;
+      color:#ffffff;
+      letter-spacing:-0.02em;
     }
-    .subtitle {
-      margin:6px 0 0 0;
+    .name {
+      display:block;
       font-size:13px;
+      margin-top:6px;
       color:var(--muted);
-      font-weight:500;
+      font-weight:600;
+    }
+
+    .subtitle {
+      margin-top:12px;
+      font-size:15px;
+      color:#e9f3ff;
+      opacity:0.95;
+      line-height:1.35;
     }
 
     .note {
-      margin:14px 0 18px;
-      font-size:15px;
-      color: #e9eefc;
-      opacity:0.95;
-      line-height:1.4;
-    }
-
-    .grid {
-      display:grid;
-      gap:16px;
-      grid-template-columns: 1fr;
-      align-items:start;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius: var(--radius);
-      padding:18px;
-      box-shadow: 0 6px 30px rgba(2,6,15,0.6);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-
-    .label {
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:1px;
+      margin:14px 0 18px 0;
+      font-size:14px;
       color:var(--muted);
-      margin-bottom:10px;
-      display:block;
     }
 
-    .qr-wrap {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      flex-direction:column;
-    }
+    .grid { display:grid; gap:14px; grid-template-columns: 1fr; }
 
-    img.qr {
-      width:220px;
-      height:220px;
+    .card{
+      padding:14px;
       border-radius:12px;
-      background:var(--glass);
-      padding:10px;
-      object-fit:contain;
-      box-shadow: 0 6px 20px rgba(6,10,20,0.6);
-      transition: transform 220ms ease, box-shadow 220ms ease;
-      will-change:transform;
-    }
-    img.qr:active{ transform: scale(.99) }
-
-    .hint {
-      font-size:13px;
-      color:var(--muted);
-      opacity:0.95;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 22px rgba(2,6,15,0.45);
+      text-align:center;
     }
 
-    .buttons {
+    .label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; display:block; }
+
+    .qr-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
+
+    img.qr { width:220px; height:220px; max-width:90%; border-radius:12px; object-fit:contain; padding:10px; background:var(--glass); box-shadow: 0 10px 30px rgba(0,0,0,0.6); transition:transform .18s ease; }
+    img.qr:active { transform:scale(.995) }
+
+    .wifi-info {
       display:flex;
       gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
+      flex-direction:column;
+      align-items:stretch;
+      width:100%;
+      max-width:460px;
       margin-top:8px;
     }
+    .field-row {
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .field {
+      flex:1;
+      text-align:left;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:10px 12px;
+      border-radius:10px;
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+      word-break:break-all;
+    }
+    .field.muted { color:var(--muted); font-weight:600 }
+
+    .small { font-size:13px; color:var(--muted) }
 
     .btn {
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      min-width:150px;
-      justify-content:center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.03);
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      font-size:15px;
-      cursor:pointer;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms;
-      user-select:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:9px 12px; border-radius:10px; border:0; cursor:pointer; font-weight:700; font-size:14px;
+      background:transparent; color:var(--muted);
     }
-    .btn:active{ transform:translateY(1px) scale(.997) }
-    .btn.primary {
-      background: linear-gradient(180deg, rgba(75,163,255,0.12), rgba(75,163,255,0.06));
-      box-shadow: 0 8px 28px rgba(75,163,255,0.05);
-      color: white;
-    }
-    .btn.ghost {
-      background:transparent;
-      border:1px dashed rgba(255,255,255,0.06);
-      color:var(--muted);
-      font-weight:600;
-    }
+    .btn.primary { background: linear-gradient(180deg, rgba(75,163,255,0.12), rgba(75,163,255,0.06)); color:#fff; border:1px solid rgba(255,255,255,0.04); }
+    .btn.ghost { border:1px dashed rgba(255,255,255,0.05); color:var(--muted); }
 
-    .row {
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
+    .contact-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+    a.link-btn { text-decoration:none; display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; font-weight:700; color:#fff; background:linear-gradient(180deg, rgba(75,163,255,0.12), rgba(75,163,255,0.06)); border:1px solid rgba(255,255,255,0.03); }
 
-    .small {
-      font-size:13px;
-      color:var(--muted);
-    }
+    .tap-reminder { margin-top:10px; display:flex; gap:10px; align-items:center; justify-content:center; color:#cfe9ff; font-size:13px; }
+    .pulse { width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(75,163,255,0.12); animation:pulse 1600ms infinite; }
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(75,163,255,0.12)} 70%{box-shadow:0 0 0 10px rgba(75,163,255,0.02)} 100%{box-shadow:0 0 0 0 rgba(75,163,255,0)} }
 
-    .name {
-      display:block;
-      font-weight:700;
-      font-size:15px;
-      margin-top:6px;
-      color:#fff;
-    }
+    .toast { position:fixed; left:50%; transform:translateX(-50%); bottom:20px; background:rgba(0,0,0,0.75); color:#fff; padding:10px 14px; border-radius:10px; font-size:13px; opacity:0; transition:opacity .18s ease, transform .18s ease; pointer-events:none; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto; }
 
-    .tap-reminder {
-      margin-top:10px;
-      font-size:13px;
-      color: #bcdcff;
-      opacity:0.9;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .pulse {
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--accent);
-      box-shadow: 0 0 0 var(--shadow, 0px) rgba(75,163,255,0.15);
-      animation: pulse 1600ms infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(75,163,255,0.18) }
-      70% { box-shadow: 0 0 0 12px rgba(75,163,255,0.02) }
-      100% { box-shadow: 0 0 0 0 rgba(75,163,255,0.00) }
-    }
-
-    /* small toast */
-    .toast {
-      position: fixed;
-      left:50%;
-      transform: translateX(-50%);
-      bottom:22px;
-      background: rgba(0,0,0,0.7);
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-size:13px;
-      opacity:0;
-      pointer-events:none;
-      transition: opacity 220ms ease, transform 220ms ease;
-    }
-    .toast.show { opacity:1; transform: translateX(-50%) translateY(-6px); pointer-events:auto }
-
-    /* small responsive */
     @media (max-width:420px){
+      header { padding:12px; }
+      h1 { font-size:18px; }
       img.qr { width:180px; height:180px; }
-      .btn { min-width:130px; padding:10px 12px; font-size:14px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap" role="main" aria-live="polite">
     <header>
-      <div class="brand">
-        <h1>Welcome — <span class="name">TO AMAN's ROOM</span></h1>
-        <div class="subtitle">“Greetings. If you’re reading this, your phone’s NFC isn’t useless after all.”</div>
-      </div>
+      <h1>Welcome — <span style="display:block; font-size:13px; font-weight:700; color:#dff1ff">TO AMAN'S ROOM</span></h1>
+      <div class="name">“Greetings. If you’re reading this, your phone’s NFC isn’t useless after all.”</div>
     </header>
 
     <p class="note">Quick access: connect to WiFi, call or message, or visit Instagram. Tap your phone (or scan the QR) to get started.</p>
 
     <div class="grid">
-      <!-- WiFi QR Card -->
+      <!-- WiFi QR + fields -->
       <div class="card" aria-labelledby="wifi-label">
         <span id="wifi-label" class="label">WiFi Access</span>
 
         <div class="qr-wrap">
-          <!-- Replace wifi_qr.png with your actual QR file -->
-          <img src="wifiQR.jpeg" alt="WiFi QR code — scan to connect" class="qr" id="qrImage" />
+          <!-- using the uploaded image path as requested -->
+          <img src="/mnt/data/690A428D-003D-46E0-9AFB-AC3DE1C60F11.jpeg" alt="WiFi QR code — scan to connect" class="qr" id="qrImage" />
 
-          <div class="hint">Scan the QR to connect instantly. (Or tap this page from your phone via NFC.)</div>
+          <div class="hint small">Scan the QR or copy the SSID & password below to connect.</div>
 
-          <div class="tap-reminder" role="status">
+          <div class="wifi-info" role="group" aria-label="Wifi details">
+            <div class="field-row">
+              <div class="field muted" id="ssidField">MyNetwork_SSID</div>
+              <button class="btn ghost" id="copySsidBtn" title="Copy SSID">Copy</button>
+            </div>
+
+            <div class="field-row">
+              <div class="field muted" id="passField">••••••••••</div>
+              <button class="btn ghost" id="togglePassBtn" title="Show password">Show</button>
+              <button class="btn ghost" id="copyPassBtn" title="Copy password">Copy</button>
+            </div>
+
+            <div class="small" style="text-align:center; margin-top:6px;">If the QR fails on iPhone, tap the Call / Instagram buttons below or copy the credentials manually.</div>
+          </div>
+
+          <div class="tap-reminder">
             <div class="pulse" aria-hidden="true"></div>
-            <div class="small">Tip: Place top edge of your phone near the tag. Tap again if nothing happens.</div>
+            <div class="small">Tip: place top edge of your phone near the tag. Tap again if nothing happens.</div>
           </div>
         </div>
       </div>
@@ -271,30 +196,21 @@
       <div class="card" aria-labelledby="contact-label">
         <span id="contact-label" class="label">Contact</span>
 
-        <div class="row" style="margin-bottom:8px;">
-          <!-- tel: link -->
-          <a class="btn primary" id="callBtn" href="tel:+919108081630" aria-label="Call phone number">
-            📞 Call
-          </a>
-
-          <!-- copy number -->
-          <button class="btn ghost" id="copyBtn" aria-label="Copy phone number">
-            📋 Copy
-          </button>
+        <div class="contact-row">
+          <a class="link-btn" id="callBtn" href="tel:+919108081630">📞 Call</a>
+          <button class="btn ghost" id="copyBtn">📋 Copy number</button>
         </div>
 
-        <div class="small">Phone: <strong id="phoneText">+919108081630</strong></div>
+        <div class="small" style="margin-top:8px;">Phone: <strong id="phoneText">+91 91080 81630</strong></div>
       </div>
 
       <!-- Instagram Card -->
       <div class="card" aria-labelledby="insta-label">
         <span id="insta-label" class="label">Instagram</span>
 
-        <div style="display:flex; gap:10px; align-items:center; justify-content:center; flex-direction:column;">
-          <a class="btn primary" id="instaBtn" href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram">
-            📸 @amansinha07
-          </a>
-          <button class="btn ghost" id="openInApp" title="Open in app where possible">Open in App</button>
+        <div style="margin-top:6px;">
+          <a class="link-btn" id="instaBtn" href="https://instagram.com/amansinha07" target="_blank" rel="noopener noreferrer">📸 @amansinha07</a>
+          <button class="btn ghost" id="openInApp">Open in App</button>
         </div>
 
         <div class="small" style="margin-top:8px;">Open the link to view profile or message.</div>
@@ -305,83 +221,104 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // Replace placeholders for convenience if you decide to inject server-side later.
-    const PHONE_NUMBER = '+919108081630';      // <-- replace
-    const INSTAGRAM_HANDLE = 'amansinha07';     // <-- replace
+    // --- CONFIGURE THESE VALUES ---
+    const WIFI_SSID = 'ironman';           // <-- replace with your SSID
+    const WIFI_PASSWORD = 'ironm@n1';       // <-- replace with your WiFi password
+    const PHONE_NUMBER = '+919108081630';        // already set
+    const INSTAGRAM_HANDLE = 'amansinha07';
     const INSTAGRAM_URL = 'https://instagram.com/' + 'amansinha07';
-    const QR_FILENAME = 'wifiQR.jpeg';         // <-- replace if needed
+    // --------------------------------
 
     // DOM refs
-    const phoneText = document.getElementById('phoneText');
+    const ssidField = document.getElementById('ssidField');
+    const passField = document.getElementById('passField');
+    const copySsidBtn = document.getElementById('copySsidBtn');
+    const copyPassBtn = document.getElementById('copyPassBtn');
+    const togglePassBtn = document.getElementById('togglePassBtn');
     const copyBtn = document.getElementById('copyBtn');
     const toast = document.getElementById('toast');
-    const instaBtn = document.getElementById('instaBtn');
     const callBtn = document.getElementById('callBtn');
-    const openInAppBtn = document.getElementById('openInApp');
-    const qrImg = document.getElementById('qrImage');
+    const phoneText = document.getElementById('phoneText');
+    const instaBtn = document.getElementById('instaBtn');
+    const openInApp = document.getElementById('openInApp');
 
-    // Apply placeholder values (helps if you forget to edit the HTML)
+    // Populate fields
+    ssidField.textContent = WIFI_SSID;
     phoneText.textContent = PHONE_NUMBER;
     callBtn.href = 'tel:' + PHONE_NUMBER;
-    copyBtn.addEventListener('click', async () => {
+    instaBtn.href = INSTAGRAM_URL;
+
+    // password masked initially
+    let passVisible = false;
+    function renderPassword() {
+      passField.textContent = passVisible ? WIFI_PASSWORD : '•'.repeat(Math.max(6, WIFI_PASSWORD.length));
+      togglePassBtn.textContent = passVisible ? 'Hide' : 'Show';
+    }
+    renderPassword();
+
+    // copy helpers
+    async function copyText(text, successMsg) {
       try {
-        await navigator.clipboard.writeText(PHONE_NUMBER);
-        showToast('Phone number copied to clipboard');
+        await navigator.clipboard.writeText(text);
+        showToast(successMsg || 'Copied to clipboard');
       } catch (e) {
         // fallback
         const ta = document.createElement('textarea');
-        ta.value = PHONE_NUMBER;
+        ta.value = text;
         document.body.appendChild(ta);
         ta.select();
         document.execCommand('copy');
         ta.remove();
-        showToast('Phone number copied');
+        showToast(successMsg || 'Copied to clipboard');
       }
+    }
+
+    copySsidBtn.addEventListener('click', () => copyText(WIFI_SSID, 'SSID copied'));
+    copyPassBtn.addEventListener('click', () => copyText(WIFI_PASSWORD, 'Password copied'));
+    copyBtn.addEventListener('click', () => copyText(PHONE_NUMBER, 'Phone copied'));
+
+    togglePassBtn.addEventListener('click', () => {
+      passVisible = !passVisible;
+      renderPassword();
     });
 
-    // Insta button wiring
-    instaBtn.href = INSTAGRAM_URL;
-    openInAppBtn.addEventListener('click', () => {
-      // Try to open Instagram app using URL scheme; if not installed, fallback to web link
-      // instagram://user?username=yourhandle  (iOS & Android attempt)
+    // Insta open in app attempt
+    openInApp.addEventListener('click', () => {
       const scheme = 'instagram://user?username=' + INSTAGRAM_HANDLE;
       const fallback = INSTAGRAM_URL;
       openWithScheme(scheme, fallback);
     });
 
-    // Try to open app via scheme with fallback
     function openWithScheme(schemeUrl, fallbackUrl) {
       const now = Date.now();
-      // Attempt via window.location; a short delay then fallback
+      // method using hidden iframe works on many devices
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       iframe.src = schemeUrl;
       document.body.appendChild(iframe);
       setTimeout(() => {
         document.body.removeChild(iframe);
-        // if too fast, likely failed - just open fallback
-        if (Date.now() - now < 1500) window.open(fallbackUrl, '_blank');
+        if (Date.now() - now < 1400) window.open(fallbackUrl, '_blank');
       }, 1200);
     }
 
-    // Toast
+    // small toast util
     function showToast(msg, ms = 2000) {
       toast.textContent = msg;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), ms);
     }
 
-    // Small UX: tapping the QR image on phone triggers download or zoom
-    qrImg.addEventListener('click', () => {
-      // open the QR in a new tab so user can long-press to save if needed
-      window.open(QR_FILENAME, '_blank');
+    // QR open (tap)
+    document.getElementById('qrImage').addEventListener('click', () => {
+      // open in new tab so user can save/zoom if needed
+      window.open('/mnt/data/690A428D-003D-46E0-9AFB-AC3DE1C60F11.jpeg', '_blank');
     });
 
-    // Accessibility: announce instructions on load for screen readers
+    // Accessibility: announce on load
     window.addEventListener('load', () => {
-      // brief announce
       setTimeout(() => {
-        const msg = 'This page shows WiFi QR code, phone call button and Instagram link.';
+        const msg = 'This page shows WiFi QR code, WiFi name and password, phone and Instagram link.';
         const live = document.createElement('div');
         live.setAttribute('aria-live', 'polite');
         live.style.position = 'absolute';
@@ -389,7 +326,7 @@
         live.textContent = msg;
         document.body.appendChild(live);
         setTimeout(() => live.remove(), 1200);
-      }, 700);
+      }, 600);
     });
   </script>
 </body>
