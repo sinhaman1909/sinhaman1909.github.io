@@ -9,9 +9,9 @@
   <style>
     :root{
       --bg1:#071029; --bg2:#081224; --accent:#4ba3ff; --muted:rgba(255,255,255,0.75);
-      --card: rgba(255,255,255,0.03); --radius:14px; --maxw:600px; --glass: rgba(255,255,255,0.03);
-      --glass-strong: rgba(255,255,255,0.06);
+      --card: rgba(255,255,255,0.03); --radius:14px; --maxw:680px; --glass: rgba(255,255,255,0.03);
       --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"Helvetica Neue";
+      --serif: "Georgia", "Times New Roman", Times, serif;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -19,13 +19,14 @@
       margin:0;
       min-height:100%;
       font-family:var(--font-sans);
-      background: radial-gradient(1000px 420px at 10% 12%, rgba(75,163,255,0.06), transparent 7%),
-                  linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 50%, #02060b 100%);
+      background:
+        radial-gradient(1000px 420px at 10% 12%, rgba(75,163,255,0.06), transparent 7%),
+        linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 50%, #02060b 100%);
       color:#fff;
       display:flex;
-      align-items:flex-start; /* so header stays visible on small devices */
+      align-items:flex-start;
       justify-content:center;
-      padding:28px 18px;
+      padding:26px 18px;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
@@ -34,45 +35,69 @@
       width:100%;
       max-width:var(--maxw);
       text-align:center;
-      margin-top:12px;
+      margin-top:10px;
     }
 
+    /* CLASSY HEADER */
     header {
-      text-align:left;
-      margin-bottom:14px;
-      padding:18px;
-      border-radius:12px;
+      margin-bottom:16px;
+      padding:22px;
+      border-radius:14px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 10px 30px rgba(2,6,15,0.5);
+      box-shadow: 0 12px 36px rgba(2,6,15,0.5);
+      display:flex;
+      align-items:center;
+      gap:18px;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
 
-    h1 {
+    .brand-left {
+      text-align:left;
+      flex:1 1 320px;
+      min-width:220px;
+    }
+
+    .title {
       margin:0;
-      font-size:20px;
-      line-height:1.05;
-      font-weight:800;
+      font-family:var(--serif);
+      font-size:24px;
+      line-height:1.02;
+      font-weight:700;
       color:#ffffff;
       letter-spacing:-0.02em;
     }
-    .name {
+    .title .sub {
       display:block;
-      font-size:13px;
+      font-family:var(--font-sans);
+      font-size:12px;
       margin-top:6px;
       color:var(--muted);
-      font-weight:600;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
     }
 
-    .subtitle {
-      margin-top:12px;
-      font-size:15px;
-      color:#e9f3ff;
-      opacity:0.95;
-      line-height:1.35;
+    .greeting {
+      flex:0 0 auto;
+      text-align:right;
+      min-width:200px;
+    }
+    .greeting p {
+      margin:0;
+      background: linear-gradient(90deg, rgba(75,163,255,0.12), rgba(75,163,255,0.06));
+      padding:10px 14px;
+      border-radius:10px;
+      display:inline-block;
+      color:#e9f8ff;
+      font-size:14px;
+      line-height:1.25;
+      max-width:360px;
     }
 
     .note {
-      margin:14px 0 18px 0;
+      margin:14px 0 20px 0;
       font-size:14px;
       color:var(--muted);
     }
@@ -84,7 +109,7 @@
       border-radius:12px;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 22px rgba(2,6,15,0.45);
+      box-shadow: 0 8px 26px rgba(2,6,15,0.45);
       text-align:center;
     }
 
@@ -92,7 +117,7 @@
 
     .qr-wrap { display:flex; flex-direction:column; align-items:center; gap:12px; }
 
-    img.qr { width:220px; height:220px; max-width:90%; border-radius:12px; object-fit:contain; padding:10px; background:var(--glass); box-shadow: 0 10px 30px rgba(0,0,0,0.6); transition:transform .18s ease; }
+    img.qr { width:220px; height:220px; max-width:92%; border-radius:12px; object-fit:contain; padding:10px; background:var(--glass); box-shadow: 0 10px 30px rgba(0,0,0,0.6); transition:transform .18s ease; }
     img.qr:active { transform:scale(.995) }
 
     .wifi-info {
@@ -101,7 +126,7 @@
       flex-direction:column;
       align-items:stretch;
       width:100%;
-      max-width:460px;
+      max-width:520px;
       margin-top:8px;
     }
     .field-row {
@@ -117,11 +142,11 @@
       padding:10px 12px;
       border-radius:10px;
       color:#fff;
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
       word-break:break-all;
     }
-    .field.muted { color:var(--muted); font-weight:600 }
+    .field.muted { color:var(--muted); font-weight:700 }
 
     .small { font-size:13px; color:var(--muted) }
 
@@ -143,9 +168,11 @@
     .toast { position:fixed; left:50%; transform:translateX(-50%); bottom:20px; background:rgba(0,0,0,0.75); color:#fff; padding:10px 14px; border-radius:10px; font-size:13px; opacity:0; transition:opacity .18s ease, transform .18s ease; pointer-events:none; }
     .toast.show { opacity:1; transform:translateX(-50%) translateY(-6px); pointer-events:auto; }
 
-    @media (max-width:420px){
-      header { padding:12px; }
-      h1 { font-size:18px; }
+    @media (max-width:520px){
+      header { padding:14px; }
+      .brand-left, .greeting { text-align:center; }
+      .greeting { width:100%; margin-top:10px; }
+      .title { font-size:20px; }
       img.qr { width:180px; height:180px; }
     }
   </style>
@@ -153,8 +180,14 @@
 <body>
   <div class="wrap" role="main" aria-live="polite">
     <header>
-      <h1>Welcome — <span style="display:block; font-size:13px; font-weight:700; color:#dff1ff">TO AMAN'S ROOM</span></h1>
-      <div class="name">“Greetings. If you’re reading this, your phone’s NFC isn’t useless after all.”</div>
+      <div class="brand-left">
+        <h2 class="title">Aman’s Room</h2>
+        <span class="sub" style="font-family:var(--font-sans); font-size:12px; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase;">Welcome</span>
+      </div>
+
+      <div class="greeting" aria-hidden="false">
+        <p>“Greetings. If you’re reading this, your phone’s NFC isn’t useless after all.”</p>
+      </div>
     </header>
 
     <p class="note">Quick access: connect to WiFi, call or message, or visit Instagram. Tap your phone (or scan the QR) to get started.</p>
@@ -165,14 +198,14 @@
         <span id="wifi-label" class="label">WiFi Access</span>
 
         <div class="qr-wrap">
-          <!-- using the uploaded image path as requested -->
-          <img src="/mnt/data/690A428D-003D-46E0-9AFB-AC3DE1C60F11.jpeg" alt="WiFi QR code — scan to connect" class="qr" id="qrImage" />
+          <!-- Use the generated PNG you downloaded earlier (place in same folder as index.html) -->
+          <img src="wifi_ironman.png" alt="WiFi QR code — scan to connect" class="qr" id="qrImage" />
 
           <div class="hint small">Scan the QR or copy the SSID & password below to connect.</div>
 
           <div class="wifi-info" role="group" aria-label="Wifi details">
             <div class="field-row">
-              <div class="field muted" id="ssidField">MyNetwork_SSID</div>
+              <div class="field muted" id="ssidField">ironman</div>
               <button class="btn ghost" id="copySsidBtn" title="Copy SSID">Copy</button>
             </div>
 
@@ -182,7 +215,7 @@
               <button class="btn ghost" id="copyPassBtn" title="Copy password">Copy</button>
             </div>
 
-            <div class="small" style="text-align:center; margin-top:6px;">If the QR fails on iPhone, tap the Call / Instagram buttons below or copy the credentials manually.</div>
+            <div class="small" style="text-align:center; margin-top:6px;">If the QR fails on iPhone, copy the credentials or open the Instagram/contact options below.</div>
           </div>
 
           <div class="tap-reminder">
@@ -221,13 +254,13 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // --- CONFIGURE THESE VALUES ---
-    const WIFI_SSID = 'ironman';           // <-- replace with your SSID
-    const WIFI_PASSWORD = 'ironm@n1';       // <-- replace with your WiFi password
-    const PHONE_NUMBER = '+919108081630';        // already set
+    // CONFIGURED VALUES (already set)
+    const WIFI_SSID = 'ironman';
+    const WIFI_PASSWORD = 'ironm@n1';
+    const PHONE_NUMBER = '+919108081630';
     const INSTAGRAM_HANDLE = 'amansinha07';
-    const INSTAGRAM_URL = 'https://instagram.com/' + 'amansinha07';
-    // --------------------------------
+    const INSTAGRAM_URL = 'https://instagram.com/' + INSTAGRAM_HANDLE;
+    const QR_FILENAME = 'wifi_ironman.png';
 
     // DOM refs
     const ssidField = document.getElementById('ssidField');
@@ -262,7 +295,6 @@
         await navigator.clipboard.writeText(text);
         showToast(successMsg || 'Copied to clipboard');
       } catch (e) {
-        // fallback
         const ta = document.createElement('textarea');
         ta.value = text;
         document.body.appendChild(ta);
@@ -291,7 +323,6 @@
 
     function openWithScheme(schemeUrl, fallbackUrl) {
       const now = Date.now();
-      // method using hidden iframe works on many devices
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       iframe.src = schemeUrl;
@@ -309,10 +340,9 @@
       setTimeout(() => toast.classList.remove('show'), ms);
     }
 
-    // QR open (tap)
+    // QR open (tap) - opens the PNG in new tab
     document.getElementById('qrImage').addEventListener('click', () => {
-      // open in new tab so user can save/zoom if needed
-      window.open('/mnt/data/690A428D-003D-46E0-9AFB-AC3DE1C60F11.jpeg', '_blank');
+      window.open(QR_FILENAME, '_blank');
     });
 
     // Accessibility: announce on load
